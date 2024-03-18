@@ -1,0 +1,4 @@
+repository "AutoPlants@Macovei_Rares@cloud"
+  path "/"
+    br "/main"
+    co "/main"

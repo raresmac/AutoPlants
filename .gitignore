@@ -1,0 +1,12 @@
+.vscode
+Library
+Temp
+Obj
+Build
+Builds
+Logs
+UserSettings
+.vs
+.gradle
+*.apk
+*.sln
