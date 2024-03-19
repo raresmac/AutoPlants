@@ -132,8 +132,8 @@
     <Compile Include="Library\PackageCache\com.unity.2d.tilemap@1.0.0\Editor\EditorTools\GridSelection\GridSelectionTool.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.tilemap@1.0.0\Editor\CreateTileFromPaletteAttribute.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.tilemap@1.0.0\Editor\TilemapFocusModeUtility.cs" />
-    <Compile Include="Library\PackageCache\com.unity.2d.tilemap@1.0.0\Editor\EditorTools\TilemapEditorToolPreferencesAsset.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.tilemap@1.0.0\Editor\PaintableGrid.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.tilemap@1.0.0\Editor\EditorTools\TilemapEditorToolPreferencesAsset.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.tilemap@1.0.0\Editor\EditorTools\GridSelection\GridSelectionTransformTool.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.tilemap@1.0.0\Editor\TilemapPrefabStageHelper.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.tilemap@1.0.0\Editor\UI\TilePaletteBrushesDropdownMenu.cs" />
@@ -518,12 +518,12 @@
       <HintPath>Library\PackageCache\com.unity.testtools.codecoverage@1.2.4\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.Plastic.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@2.3.1\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="unityplastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@2.3.1\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Plastic.Antlr3.Runtime">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@2.3.1\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Plastic.Newtonsoft.Json">

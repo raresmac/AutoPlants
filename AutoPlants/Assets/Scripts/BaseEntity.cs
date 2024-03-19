@@ -23,19 +23,22 @@ public class BaseEntity : MonoBehaviour
     protected bool HasEnemy => currentTarget != null;
     protected bool IsInRange => currentTarget != null && Vector3.Distance(this.transform.position, currentTarget.transform.position) <= range;
     protected bool moving;
-    private Node destination;
+    protected Node destination;
 
     public void Setup(Team team, Node currentNode)
     {
         myTeam = team;
-        if (myTeam == Team.Team2)
-        {
-            spriteRender.flipX = true;
-        }
 
         this.currentNode = currentNode;
         transform.position = currentNode.worldPosition;
         currentNode.SetOccupied(true);
+    }
+
+    protected void Start()
+    {
+        // GameManager.Instance.OnRoundStart += OnRoundStart;
+        // GameManager.Instance.OnRoundEnd += OnRoundEnd;
+        // GameManager.Instance.OnUnitDied += OnUnitDied;
     }
 
     protected void FindTarget()
@@ -45,6 +48,7 @@ public class BaseEntity : MonoBehaviour
         BaseEntity entity = null;
         foreach (BaseEntity e in allEnemies)
         {
+            Debug.Log("New entity: " + e);
             if (Vector3.Distance(e.transform.position, this.transform.position) <= minDistance)
             {
                 minDistance = Vector3.Distance(e.transform.position, this.transform.position);
@@ -62,7 +66,7 @@ public class BaseEntity : MonoBehaviour
 
         if(!moving)
         {
-            Node destination = null;
+            destination = null;
             List<Node> candidates = GridManager.Instance.GetNodesCloseTo(currentTarget.CurrentNode);
             candidates = candidates.OrderBy(x => Vector3.Distance(x.worldPosition, this.transform.position)).ToList();
             for(int i = 0; i < candidates.Count;i++)

@@ -252,8 +252,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66a293d1f01ffc54aa2efca2358c934c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allEntitiesPrefab:
+  PlayerEntitiesPrefab:
   - {fileID: 3146816194346441769, guid: 9189c9bbf7fb3dc4885d1dcd8be27a76, type: 3}
+  EnemyEntitiesPrefab:
+  - {fileID: 9107672393594539116, guid: af05a830c4431d64e9c913a52cf912f8, type: 3}
 --- !u!4 &639127897
 Transform:
   m_ObjectHideFlags: 0

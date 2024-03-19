@@ -4,21 +4,16 @@ using UnityEngine;
 
 public class MeleeEntity : BaseEntity
 {
-    // protected override void OnRoundStart()
-    // {
-    //     FindTarget();
-    // }
+    protected void OnRoundStart()
+    {
+        FindTarget();
+    }
 
     public void Update()
     {
         if (!HasEnemy)
         {
             FindTarget();
-        }
-
-        if (!HasEnemy)
-        {
-            return;
         }
 
         if(IsInRange && !moving)
