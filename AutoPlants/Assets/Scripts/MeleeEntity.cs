@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MeleeEntity : BaseEntity
 {
-    protected void OnRoundStart()
+    protected override void OnRoundStart()
     {
         FindTarget();
     }
@@ -19,11 +19,11 @@ public class MeleeEntity : BaseEntity
         if(IsInRange && !moving)
         {
             //In range for attack!
-            // if(canAttack)
-            // {
-                // Attack();
-                // currentTarget.TakeDamage(baseDamage);
-            // }
+            if(canAttack)
+            {
+                Attack();
+                currentTarget.TakeDamage(baseDamage);
+            }
         }
         else
         {

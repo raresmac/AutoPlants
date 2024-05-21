@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class BaseEntity : MonoBehaviour
 {
+    public HealthBar barPrefab;
     public SpriteRenderer spriteRender;
 
     public int baseDamage = 1;
@@ -17,6 +18,7 @@ public class BaseEntity : MonoBehaviour
     protected Team myTeam;
     protected BaseEntity currentTarget = null;
     protected Node currentNode;
+    protected HealthBar healthbar;
 
     public Node CurrentNode => currentNode;
 
@@ -25,6 +27,10 @@ public class BaseEntity : MonoBehaviour
     protected bool moving;
     protected Node destination;
 
+    protected bool dead = false;
+    protected bool canAttack = true;
+    protected float waitBetweenAttack;
+
     public void Setup(Team team, Node currentNode)
     {
         myTeam = team;
@@ -32,14 +38,21 @@ public class BaseEntity : MonoBehaviour
         this.currentNode = currentNode;
         transform.position = currentNode.worldPosition;
         currentNode.SetOccupied(true);
+
+        healthbar = Instantiate(barPrefab, this.transform);
+        healthbar.Setup(this.transform, baseHealth);
     }
 
     protected void Start()
     {
-        // GameManager.Instance.OnRoundStart += OnRoundStart;
-        // GameManager.Instance.OnRoundEnd += OnRoundEnd;
-        // GameManager.Instance.OnUnitDied += OnUnitDied;
+        GameManager.Instance.OnRoundStart += OnRoundStart;
+        GameManager.Instance.OnRoundEnd += OnRoundEnd;
+        GameManager.Instance.OnUnitDied += OnUnitDied;
     }
+
+    protected virtual void OnRoundStart() { }
+    protected virtual void OnRoundEnd() { }
+    protected virtual void OnUnitDied(BaseEntity diedUnity) { }
 
     protected void FindTarget()
     {
@@ -48,7 +61,7 @@ public class BaseEntity : MonoBehaviour
         BaseEntity entity = null;
         foreach (BaseEntity e in allEnemies)
         {
-            Debug.Log("New entity: " + e);
+            // Debug.Log("New entity: " + e);
             if (Vector3.Distance(e.transform.position, this.transform.position) <= minDistance)
             {
                 minDistance = Vector3.Distance(e.transform.position, this.transform.position);
@@ -115,5 +128,38 @@ public class BaseEntity : MonoBehaviour
     public void SetCurrentNode(Node node)
     {
         currentNode = node;
+    }
+    
+    public void TakeDamage(int amount)
+    {
+        baseHealth -= amount;
+        healthbar.UpdateBar(baseHealth);
+
+        if(baseHealth <= 0 && !dead)
+        {
+            dead = true;
+            currentNode.SetOccupied(false);
+            GameManager.Instance.UnitDead(this);
+        }
+    }
+
+    protected virtual void Attack()
+    {
+        if (!canAttack)
+            return;
+
+        // animator.SetTrigger("attack");
+
+        waitBetweenAttack = 1 / attackSpeed;
+        StartCoroutine(WaitCoroutine());
+    }
+
+    IEnumerator WaitCoroutine()
+    {
+        canAttack = false;
+        yield return null;
+        // animator.ResetTrigger("attack");
+        yield return new WaitForSeconds(waitBetweenAttack);
+        canAttack = true;
     }
 }

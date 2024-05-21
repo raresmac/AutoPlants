@@ -15,17 +15,19 @@ public class GridManager : Manager<GridManager>
     {
         base.Awake();
         InitializeGraph();
-        startPositionPerTeam = new Dictionary<Team, int>();
-        startPositionPerTeam.Add(Team.Team1, 0);
-        startPositionPerTeam.Add(Team.Team2, graph.Nodes.Count -1);
+        startPositionPerTeam = new Dictionary<Team, int>
+        {
+            { Team.Team1, 0 },
+            { Team.Team2, graph.Nodes.Count - 1 }
+        };
     }
 
-    public Node GetFreeNode(Team forTeam)
+    public Node GetFreeNode(Team forTeam, string type="land")
     {
         int startIndex = startPositionPerTeam[forTeam];
         int currentIndex = startIndex;
 
-        while(graph.Nodes[currentIndex].IsOccupied)
+        while(graph.Nodes[currentIndex].IsOccupied || graph.Nodes[currentIndex].type != type)
         {
             if(startIndex == 0)
             {
@@ -58,15 +60,20 @@ public class GridManager : Manager<GridManager>
     {
         graph = new Graph();
 
-        for(int x = grid.cellBounds.xMin; x < grid.cellBounds.xMax; x++)
+        for(int y = grid.cellBounds.yMin; y < grid.cellBounds.yMax; y++)
         {
-            for(int y = grid.cellBounds.yMin; y < grid.cellBounds.yMax; y++)
+            for(int x = grid.cellBounds.xMin; x < grid.cellBounds.xMax; x++)
             {
                 Vector3Int localPosition = new Vector3Int(x, y, (int)grid.transform.position.y);
                 if (grid.HasTile(localPosition))
                 {
+                    Tile t = (Tile)grid.GetTile(localPosition);
+                    string type = "land";
+                    if(t.name == "HexTile_Sheet_1A_28" || t.name == "HexTile_Sheet_1A_47"){
+                        type = "water";
+                    }
                     Vector3 worldPosition = grid.CellToWorld(localPosition);
-                    graph.AddNode(worldPosition);
+                    graph.AddNode(worldPosition, type);
                 }
             }
         }
