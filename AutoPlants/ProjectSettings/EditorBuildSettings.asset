@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 9368ae9a0f4c7ac4088f999c618663c3
+  - enabled: 1
+    path: Assets/Fantasy Forest Environment Free Sample/Scenes/3DPlantsScene.unity
+    guid: 7769f33fb4fa2e5458344a36556ad760
+  - enabled: 1
+    path: Assets/Scenes/Water.unity
+    guid: 40d6a86aa96623f458cd1f1e8fb8e56f
   m_configObjects: {}
