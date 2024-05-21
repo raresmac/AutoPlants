@@ -13,10 +13,10 @@ public class UIShop : MonoBehaviour
 
     private void Start()
     {
-        cachedDb = GameManager.Instance.playerEntitiesDatabase;
+        cachedDb = GameManager.Instance.entitiesDatabase;
         GenerateCard();
         // PlayerData.Instance.OnUpdate += Refresh;
-        // Refresh();
+        Refresh();
     }
 
     public void GenerateCard()
@@ -39,20 +39,20 @@ public class UIShop : MonoBehaviour
         //     card.gameObject.SetActive(false);
         //     GameManager.Instance.OnEntityBought(cardData);
         // }
-    }/*
+    }
 
     public void OnRefreshClick()
     {
         //Decrease money 
-        if(PlayerData.Instance.CanAfford(refreshCost))
-        {
-            PlayerData.Instance.SpendMoney(refreshCost);
-            GenerateCard();
-        }
+        // if(PlayerData.Instance.CanAfford(refreshCost))
+        // {
+        //     PlayerData.Instance.SpendMoney(refreshCost);
+        //     GenerateCard();
+        // }
     }
 
     void Refresh()
     {
-        money.text = PlayerData.Instance.Money.ToString();
-    }*/
+        // money.text = PlayerData.Instance.Money.ToString();
+    }
 }

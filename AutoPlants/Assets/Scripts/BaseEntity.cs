@@ -36,6 +36,8 @@ public class BaseEntity : MonoBehaviour
         myTeam = team;
 
         this.currentNode = currentNode;
+        Debug.Log("Current node: " + currentNode);
+        Debug.Log("Current node position: " + currentNode.worldPosition);
         transform.position = currentNode.worldPosition;
         currentNode.SetOccupied(true);
 

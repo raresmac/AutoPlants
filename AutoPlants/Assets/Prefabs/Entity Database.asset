@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6e946b88097d9d47957cc0ad3aa4c2b, type: 3}
+  m_Name: Entity Database
+  m_EditorClassIdentifier: 
+  allEntities:
+  - prefab: {fileID: 1293623405623667237, guid: b5a1479164a90ed46b44db79370037fb, type: 3}
+    name: Chomper
+    icon: {fileID: 21300000, guid: 9d7c25096823612429a380fc0ee05cf3, type: 3}
+    type: land
+    SL: 0
+  - prefab: {fileID: -7267080385914052161, guid: 8b5d30f7a57ac1a4baa546d6dbd2283e, type: 3}
+    name: Peashooter
+    icon: {fileID: 21300000, guid: b4c90024c6c9b3c479190b3d1ce8e777, type: 3}
+    type: land
+    SL: 0
+  - prefab: {fileID: 1293623405623667237, guid: 30a042fae73b7e54bb983efecc291ba6, type: 3}
+    name: Wallnut
+    icon: {fileID: 21300000, guid: 76cc51d4c32ca13459efbd04a79e712c, type: 3}
+    type: land
+    SL: 0
+  - prefab: {fileID: -7267080385914052161, guid: 34c6a207739bc234a8fdec8cf9de9519, type: 3}
+    name: Puffshroom
+    icon: {fileID: 21300000, guid: e280c3ffcb9b3404c892aaaa63b497fb, type: 3}
+    type: land
+    SL: 0
+  - prefab: {fileID: -7267080385914052161, guid: 9bf9ee289425f034b9cc03f69a159c44, type: 3}
+    name: Cattail
+    icon: {fileID: 21300000, guid: 2877c528345ef694bb855cafdeb4abbf, type: 3}
+    type: water
+    SL: 0
